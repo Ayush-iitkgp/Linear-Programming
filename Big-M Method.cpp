@@ -104,13 +104,6 @@ int pivcol(int m,int n,int p)
 }
 int pivrow(int m,int n,int p,int pos)
 {
-	/*
-	2 3 2 y
-	y 1 1 2
-	y -1 1 1
-	n 0 1 3
-	-1 2 0
-	*/
   int i, piv, set=0;  //In previous code where piv=1 initially, if element at index piv is negative, positivity condition is bypassed
 	double min;
 	for (i = 1; i <= m; i++)
@@ -132,6 +125,13 @@ int pivrow(int m,int n,int p,int pos)
 		}
 	}
 	return piv;
+	/*
+	2 3 2 y
+	y 1 1 2
+	y -1 1 1
+	n 0 1 3
+	-1 2 0
+	*/
 }
 int optimise(int m,int n,int p)
 {
