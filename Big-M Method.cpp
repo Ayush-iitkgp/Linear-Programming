@@ -104,19 +104,34 @@ int pivcol(int m,int n,int p)
 }
 int pivrow(int m,int n,int p,int pos)
 {
-  int i,piv = 1;
-  double min = (A[1][n+p+1]/A[1][pos]);
-  for(i=1;i<=m;i++)
-    {
-      if(min>(A[i][n+p+1]/A[i][pos]))
+	/*
+	2 3 2 y
+	y 1 1 2
+	y -1 1 1
+	n 0 1 3
+	-1 2 0
+	*/
+  int i, piv, set=0;  //In previous code where piv=1 initially, if element at index piv is negative, positivity condition is bypassed
+	double min;
+	for (i = 1; i <= m; i++)
 	{
-	  if(A[i][pos]>0)
-	    {
-	      piv = i;
-	    }
+		if (A[i][pos] > 0) {
+			if (set == 0) {
+				min = (A[i][n + p + 1] / A[i][pos]);
+				set = 1;
+				piv = i;
+			}
+			if (min > (A[i][n + p + 1] / A[i][pos])) // positivity condition
+			{
+
+
+				min = (A[i][n + p + 1] / A[i][pos]);  
+				piv = i;
+
+			}
+		}
 	}
-    }
-  return piv;
+	return piv;
 }
 int optimise(int m,int n,int p)
 {
